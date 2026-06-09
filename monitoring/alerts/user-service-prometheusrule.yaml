@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: iimp-alert-rules
+  namespace: monitoring
+  labels:
+    release: monitoring
+
+spec:
+  groups:
+  - name: iimp-alerts
+
+    rules:
+
+    - alert: UserServiceDown
+
+      expr: kube_deployment_status_replicas_available{deployment="user-service",namespace="iimp"} < 1
+
+      for: 1m
+
+      labels:
+        severity: critical
+
+      annotations:
+        summary: "User Service Down"
+        description: "User service has no available replicas"
