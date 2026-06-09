@@ -1,4 +1,17 @@
+# Docker image archives
 *.tar
+
+# Logs
 *.log
+
+# Python
 __pycache__/
 *.pyc
+
+# Virtual environments
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/

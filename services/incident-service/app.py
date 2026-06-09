@@ -5,6 +5,7 @@ app = FastAPI()
 
 incidents = []
 
+
 @app.get("/health")
 def health():
     return {
@@ -12,12 +13,18 @@ def health():
         "service": "incident-service"
     }
 
+
 @app.get("/incidents")
 def get_incidents():
     return incidents
 
+
 @app.post("/webhook")
 def receive_alert(payload: Dict):
+
+    print("\n========== ALERT RECEIVED ==========")
+    print(payload)
+    print("===================================\n")
 
     incidents.append(payload)
 
