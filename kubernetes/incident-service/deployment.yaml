@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: incident-service
-        image: incident-service:v1
+        image: incident-service:v3
         imagePullPolicy: Never
 
         ports:
